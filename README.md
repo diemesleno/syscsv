@@ -92,7 +92,7 @@ check the information with the data processed
 ![](sys2p.png)
 
 ### Sys2 [DB Processing] Adimin Page
-![](sy2a.png)
+![](sys2a.png)
 
 ## Release History
 * 1.0.0
