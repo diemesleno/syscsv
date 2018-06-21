@@ -39,7 +39,7 @@
                                     <img src="{% avatar_url size=180 %}" class="img-circle" alt="User Image">
                                     <p>
                                         {% firstof request.user.get_short_name request.user.get_username %}
-                                        <small>Membro desde {{ request.user.date_joined }}</small>
+                                        <small>Since {{ request.user.date_joined }}</small>
                                     </p>
                                 </li>
                                 {% endblock %}
