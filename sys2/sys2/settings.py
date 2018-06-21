@@ -145,7 +145,7 @@ CELERY_DEFAULT_QUEUE = 'sys2'
 
 LOGOUT_REDIRECT_URL = 'index'
 
-API_URL = config('API_URL', default='http://127.0.0.1:8000/api/v1/')
+API_URL = config('API_URL', default='http://127.0.0.1:8000/api/v1/?paginate=False')
 
 if LOG:
     LOGGING = {
