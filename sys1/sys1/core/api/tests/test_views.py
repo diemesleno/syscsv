@@ -1,13 +1,13 @@
 from django.test import TestCase
 from django.test import RequestFactory
 
-from sys1.core.api.views import ContactAPIView
+from sys1.core.api.views import TaskResultAPIView
 
 
-class TestContactAPIView(TestCase):
+class TestTaskResultAPIView(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
-        self.view = ContactAPIView.as_view()
+        self.view = TaskResultAPIView.as_view()
     
     def test_get(self):
         request = self.factory.get('/')
