@@ -12,11 +12,9 @@ class CustomPagination(pagination.PageNumberPagination):
 
 class ContactAPIView(generics.ListAPIView):
     """ 
-    API to return all messages resulted from the task queue
+    API to return all messages resulted from the task queue paginated by 100
     """
     pagination_class = CustomPagination
+    queryset = TaskResult.objects.all()
+    serializer_class = ContactSerializer
 
-    def get(self, request, format=None):
-        qs = TaskResult.objects.all()
-        serializer = ContactSerializer(qs, many=True)
-        return Response(serializer.data)
