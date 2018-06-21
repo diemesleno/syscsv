@@ -15,7 +15,7 @@ class TaskResultAPIView(generics.ListAPIView):
     API to return all messages resulted from the task queue paginated by 100
     """
     pagination_class = CustomPagination
-    queryset = TaskResult.objects.all()
+    queryset = TaskResult.objects.all().order_by('id')
     serializer_class = TaskResultSerializer
 
     def get_paginated_response(self, data):
