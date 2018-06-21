@@ -1,5 +1,5 @@
 # SysCSV 
-> Djago APP to proccess a csv file in background with celery task, and share the content by API with another
+> Django APP to proccess a csv file in background with celery task, and share the content by API with another
 project that consumes it and insert in a database using also a celery background task. 
 
 ### Task Description
