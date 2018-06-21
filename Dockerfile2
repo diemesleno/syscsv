@@ -1,0 +1,14 @@
+FROM python:3.6.5-alpine3.7
+
+RUN apk update && apk add --no-cache \
+        build-base \
+        postgresql-dev \
+    && rm -rf /var/cache/apk/*
+
+COPY sys2  /usr/src/sys2
+
+WORKDIR /usr/src/sys2
+
+EXPOSE 8080
+
+RUN pip install -r requirements.txt && rm -rf /root/.cache

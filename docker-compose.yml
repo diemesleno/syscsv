@@ -1,0 +1,74 @@
+version: '3.3'
+
+services:
+  postgres1:
+    image: postgres:10-alpine
+    restart: always
+    hostname: postgres1
+    ports: 
+      - "5432"
+    volumes:
+      - postgresdata1:/var/lib/postgresql/data
+    networks: 
+      - production
+  postgres2:
+    image: postgres:10-alpine
+    restart: always
+    hostname: postgres2
+    ports: 
+      - "5432"
+    volumes:
+      - postgresdata2:/var/lib/postgresql/data
+    networks: 
+      - production
+  redis:
+    image: redis:3-alpine
+    hostname: redis
+    networks: 
+      - production
+  sys1:
+    image: sys1/sys1
+    hostname: sys1
+    build:
+      context: .
+      dockerfile: Dockerfile1
+    volumes:
+      - ./sys1:/usr/src/sys1
+    ports:
+      - "8000:8000"
+    links:
+      - postgres1
+      - redis
+    networks: 
+      - production
+    depends_on:
+      - postgres1
+      - redis
+    command: ["./wait-for-it.sh", "postgres1:5432", "--"]
+  sys2:
+    image: sys2/sys2
+    hostname: sys2
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    volumes:
+      - ./sys2:/usr/src/sys2
+    ports:
+      - "8080:8080"
+    links:
+      - postgres2
+      - redis
+    networks: 
+      - production
+    depends_on:
+      - postgres2
+      - redis
+    command: ["./wait-for-it.sh", "postgres2:5432", "--"]
+volumes:
+  postgresdata1:
+  postgresdata2:
+  sys1:
+  sys2:  
+networks:
+   production:
+      driver: bridge
