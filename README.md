@@ -58,7 +58,7 @@ j) Access http://127.0.0.1:8000 and click in the button to proccess the csv file
 
 k) Access http://127.0.0.1:8000/api/v1/ to check the api with the data proccessed
 
-l) Access http://127.0.0.1:8000/admin and log in using the superuser created in the step (e) to
+l) Access http://127.0.0.1:8000/admin and log in using the superuser created in the step (g) to
 check the information with the result
 
 m) docker-compose run -d -p 8080:8080 --name sys2 sys2 python manage.py runserver 0.0.0.0:8080
@@ -73,7 +73,7 @@ q) docker exec -it sys2 celery -A sys2 worker -l info
 
 r) Access http://127.0.0.1:8080 and click the button to consume the API and populate the database
 
-s) Access http://127.0.0.1:8080/admin and log in using the superuser created in the step (l) to
+s) Access http://127.0.0.1:8080/admin and log in using the superuser created in the step (o) to
 check the information with the data processed
 ```
 
